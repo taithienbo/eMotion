@@ -24,4 +24,5 @@ local.properties
 .Trashes
 
 # Files that eclipse doesn't need
-ProjectWorkspace/.metadata/.plugins/org.eclipse.team.cvs.core/*
+ProjectWorkspace/.metadata/.log
+ProjectWorkspace/.metadata/.plugins/*
