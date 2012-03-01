@@ -11,7 +11,7 @@ public class TabWidget extends TabActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.tabwidget);
+		setContentView(R.layout.main);
 
 		Resources res = getResources();
 		TabHost tabHost = getTabHost();
