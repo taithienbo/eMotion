@@ -26,7 +26,7 @@ public class TabWidget extends TabActivity {
 		tabHost.addTab(spec);
 
 		// Favorites tab
-		intent = new Intent().setClass(this, EMotionActivity.class);
+		intent = new Intent().setClass(this, FavoriteActivity.class);
 		spec = tabHost
 				.newTabSpec("favorites")
 				.setIndicator("Favorites",
