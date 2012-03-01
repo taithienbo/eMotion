@@ -21,7 +21,7 @@ public class TabWidget extends TabActivity {
 		// History tab
 		intent = new Intent().setClass(this, EMotionActivity.class);
 		spec = tabHost.newTabSpec("history")
-				.setIndicator("History", res.getDrawable(R.layout.ic_tab_list))
+				.setIndicator("History", res.getDrawable(R.layout.ic_tab_hist))
 				.setContent(intent);
 		tabHost.addTab(spec);
 
