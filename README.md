@@ -1,6 +1,9 @@
 eMotion Android Project
 =======================
 
+About the Project
+-----------------
+I will talk about the project here.
 Creators
 --------
 Kaushik Shankar
