@@ -22,7 +22,8 @@ public class SettingsActivity extends Activity {
 	};
 	
 	public final static String PREFERENCE = "user_preference";
-	public final static String INTERVAL_KEY = "interval";
+	public final static String INTERVAL_MIN = "hour";
+	public final static String INTERVAL_HOUR = "minute";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,18 +40,16 @@ public class SettingsActivity extends Activity {
 					long id) {
 				list.setSelection(position);
 			}
-			
 		});
 	
 		// Set up the interval picker
 		final TimePicker picker = (TimePicker) this.findViewById(R.id.intervalPicker);
 		picker.setIs24HourView(true);
-		picker.setCurrentHour(0);
-		picker.setCurrentMinute(5);
 		SharedPreferences userPreferences = SettingsActivity.this.getSharedPreferences(
 				SettingsActivity.PREFERENCE, Activity.MODE_PRIVATE);
-		
-		Log.d("PreferenceValue",String.valueOf(userPreferences.getInt(INTERVAL_KEY, 0)));
+
+		picker.setCurrentHour(userPreferences.getInt(INTERVAL_HOUR, 0));
+		picker.setCurrentMinute(userPreferences.getInt(INTERVAL_MIN, 5));
 		
 		// Set action listener for save settings button
 		Button saveButton = (Button) this.findViewById(R.id.saveButton);
@@ -62,7 +61,8 @@ public class SettingsActivity extends Activity {
 						SettingsActivity.PREFERENCE, Activity.MODE_PRIVATE);
 				SharedPreferences.Editor editor = userPreferences.edit();
 				Log.d("Interval value", String.valueOf(picker.getCurrentMinute() + picker.getCurrentHour() * 60));
-				editor.putInt(INTERVAL_KEY, picker.getCurrentMinute() + picker.getCurrentHour() * 60);
+				editor.putInt(INTERVAL_MIN, picker.getCurrentMinute());
+				editor.putInt(INTERVAL_HOUR, picker.getCurrentHour());
 				editor.commit();
 			}
 			
