@@ -1,84 +1,193 @@
+
 package com.emotion;
 
+
 import java.util.ArrayList;
+
+
 import java.util.List;
 
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class FavoriteActivity extends ListActivity {
+
+public class FavoriteActivity extends Activity
+{
+	private ListView				favoritesListView;
+	private List < FavoriteListItem >	favoritesList;
+	private MyListContentAdapter		adapter;
+
+
+
 	/** Called when the activity is first created. */
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		TextView textview = new TextView(this);
-		textview.setText("This is the favorite tab");
-		setContentView(textview);
-	//	setContentView(R.layout.main);
-		
-		// Set a custom list view instead of using the default listView
-		setContentView(R.layout.favorite_page_list_layout);
-		
-		// We will replace this with the data from the database 
-		List<String> test_data = new ArrayList<String>();
-		test_data.add("A funny joke");
-		test_data.add("Another funny joke");
-		test_data.add("Isn't it funny");
-		
-		FavoriteListAdapter<String> fla = new FavoriteListAdapter<String>(this, R.layout.favorite_page_row_layout,
-				R.id.textView_favorite_item_title, test_data);
-		
-		setListAdapter(fla);
+	public void onCreate ( Bundle savedInstanceState )
+	{
+		super.onCreate ( savedInstanceState );
+		setContentView ( R.layout.favorites_layout );
+		favoritesListView = (ListView) findViewById ( R.id.favorites_listview );
+		adapter = new MyListContentAdapter ( this );
+		favoritesListView.setAdapter ( adapter );
 	}
-	
-	
 
 
-	private class FavoriteListAdapter<T> extends ArrayAdapter<T>{
-		
-		
-		
-		public FavoriteListAdapter(Context context, int resource,
-				int textViewResourceId, List<T> objects) {
-			
-		super(context, resource, textViewResourceId, objects);
-	
-		this.context = context;
+	private final class FavoriteListItem
+	{
+		String	text;
+	}
+
+	public static class MyListContentAdapter extends BaseAdapter implements Filterable
+	{
+		private LayoutInflater	mInflater;
+		private Bitmap			mIcon1;
+		private Context		context;
+
+
+
+		public MyListContentAdapter ( Context context )
+		{
+			// Cache the LayoutInflate to avoid asking for a
+			// new one each time.
+			mInflater = LayoutInflater.from ( context );
+			this.context = context;
 		}
-		
-		
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent){
-			
-			View v = convertView;
-			if(v == null){
-				LayoutInflater inflater = LayoutInflater.from(context);
-				inflater.inflate(R.layout.favorite_page_row_layout, null);
+
+
+
+		/**
+		 * Make a view to hold each row.
+		 * 
+		 * @see android.widget.ListAdapter#getView(int,
+		 *      android.view.View, android.view.ViewGroup)
+		 */
+		public View getView ( final int position, View convertView, ViewGroup parent )
+		{
+			// A ViewHolder keeps references to children
+			// views to avoid
+			// unneccessary calls
+			// to findViewById() on each row.
+			ViewHolder holder;
+			// When convertView is not null, we can reuse it
+			// directly, there is
+			// no need
+			// to reinflate it. We only inflate a new View
+			// when the convertView
+			// supplied
+			// by ListView is null.
+			if ( convertView == null )
+			{
+				convertView = mInflater.inflate ( R.layout.favorites_list_item_layout, null );
+				// Creates a ViewHolder and store references
+				// to the two children
+				// views
+				// we want to bind data to.
+				holder = new ViewHolder ( );
+				holder.textLine = (TextView) convertView.findViewById ( R.id.favorite_item_text );
+				holder.iconLine = (ImageView) convertView.findViewById ( R.id.favorite_item_icon );
+				convertView.setOnClickListener ( new OnClickListener ( )
+				{
+					private int	pos	= position;
+
+
+
+					public void onClick ( View v )
+					{
+						Toast.makeText ( context, "Click-" + String.valueOf ( pos ), Toast.LENGTH_SHORT ).show ( );
+					}
+				} );
+				convertView.setTag ( holder );
 			}
-			
-		
-			return v;
-			
+			else
+			{
+				// Get the ViewHolder back to get fast
+				// access to the TextView
+				// and the ImageView.
+				holder = (ViewHolder) convertView.getTag ( );
+			}
+			// Icons bound to the rows.
+			mIcon1 = BitmapFactory.decodeResource ( context.getResources ( ), R.drawable.ic_launcher );
+			// Bind the data efficiently with the holder.
+			holder.iconLine.setImageBitmap ( mIcon1 );
+			holder.textLine.setText ( "Position " + position + "!" );
+			return convertView;
 		}
-		
-	/**	
-		@Override
-		public View onCreateView(View parent, String name, Context context,{
-			
+
+
+		static class ViewHolder
+		{
+			TextView	textLine;
+			ImageView	iconLine;
+		}
+
+
+
+		public Filter getFilter ( )
+		{
+			// TODO Auto-generated method stub
 			return null;
 		}
-		
-		**/
-		private Context context;
+
+
+
+		public long getItemId ( int position )
+		{
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+
+
+		public int getCount ( )
+		{
+			// TODO Auto-generated method stub
+			return 200;
+		}
+
+
+
+		public Object getItem ( int position )
+		{
+			// TODO Auto-generated method stub
+			return "pos: " + position;
+		}
+	}
 	
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.option_menu, menu);
+		return true;
+
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		Intent intent = new Intent(FavoriteActivity.this, SettingsActivity.class);
+		startActivity(intent);
+		return true;
 
 	}
 }
+

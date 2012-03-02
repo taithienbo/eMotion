@@ -9,42 +9,62 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
+
+        <!-- ================================================================================================= -->
+        <!-- Tab Widget Activity is what makes the options at the top of the screen (Favorites, History, etc). -->
+        <!-- ================================================================================================= -->
+
         <activity
-            android:name=".TabWidget"
             android:label="@string/app_name"
+            android:name=".TabWidget"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
-            <intent-filter>
+            <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- ================================================================================================= -->
+        <!-- eMotion Activity is the main Activity that contains everything else. -->
+        <!-- ================================================================================================= -->
+
         <activity
-            android:name=".EMotionActivity"
             android:label="@string/app_name"
+            android:name=".EMotionActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
-            <intent-filter>
+            <intent-filter >
                 <action android:name="EMotionActivity" />
 
                 <category android:name="android.intent.category.TAB" />
             </intent-filter>
         </activity>
+
+        <!-- ================================================================================================= -->
+        <!-- Favorite Activity is the Activity that shows the favorites of the user. -->
+        <!-- ================================================================================================= -->
+
         <activity
-            android:name=".FavoriteActivity"
             android:label="@string/app_name"
+            android:name=".FavoriteActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
-            <intent-filter>
+            <intent-filter >
                 <action android:name="FavoriteActivity" />
 
                 <category android:name="android.intent.category.TAB" />
             </intent-filter>
         </activity>
+
+        <!-- ================================================================================================= -->
+        <!-- eMotion Activity is the main Activity that contains everything else. -->
+        <!-- ================================================================================================= -->
+
         <activity
-            android:name=".SettingsActivity"
             android:label="@string/app_name"
+            android:name=".SettingsActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
