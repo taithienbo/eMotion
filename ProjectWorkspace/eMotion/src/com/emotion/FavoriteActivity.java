@@ -1,11 +1,16 @@
 
 package com.emotion;
 
+
+import java.util.ArrayList;
+
+
 import java.util.List;
 
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -175,6 +180,7 @@ public class FavoriteActivity extends Activity
 		MenuInflater inflater = getMenuInflater ( );
 		inflater.inflate ( R.menu.option_menu, menu );
 		return true;
+
 	}
 
 
@@ -187,3 +193,4 @@ public class FavoriteActivity extends Activity
 		return true;
 	}
 }
+
