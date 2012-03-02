@@ -9,6 +9,7 @@ import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -18,14 +19,25 @@ import android.widget.Button;
 
 public class ReminderReceiverActivity extends Activity {
 	private MediaPlayer mediaPlayer;
+	private PowerManager.WakeLock wl;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "My Tag");
+        wl.acquire();
 
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN | 
+			    WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD | 
+			    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | 
+			    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON,
+			    WindowManager.LayoutParams.FLAG_FULLSCREEN | 
+			    WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD | 
+			    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | 
+			    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
 		setContentView(R.layout.reminder);
 
@@ -71,5 +83,10 @@ public class ReminderReceiverActivity extends Activity {
 			}
 		}
 		return alert;
+	}
+	 
+	protected void onStop() {
+	    super.onStop();
+	    wl.release();
 	}
 }

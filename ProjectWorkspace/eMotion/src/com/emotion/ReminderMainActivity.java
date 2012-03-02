@@ -19,7 +19,7 @@ public class ReminderMainActivity extends Activity {
 		
 		// Create an offset from the current time in which the reminder will go off.
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.SECOND, 5);
+		cal.add(Calendar.SECOND, 1);
 		
 		// Create a new PendingIntent and add it to the AlarmManager
 		Intent intent = new Intent(this, ReminderReceiverActivity.class);
