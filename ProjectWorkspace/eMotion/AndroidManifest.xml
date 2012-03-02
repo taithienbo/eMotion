@@ -15,11 +15,11 @@
         <!-- ================================================================================================= -->
 
         <activity
-            android:label="@string/app_name"
             android:name=".TabWidget"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -31,11 +31,11 @@
         <!-- ================================================================================================= -->
 
         <activity
-            android:label="@string/app_name"
             android:name=".EMotionActivity"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="EMotionActivity" />
 
                 <category android:name="android.intent.category.TAB" />
@@ -47,11 +47,11 @@
         <!-- ================================================================================================= -->
 
         <activity
-            android:label="@string/app_name"
             android:name=".FavoriteActivity"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="FavoriteActivity" />
 
                 <category android:name="android.intent.category.TAB" />
@@ -63,8 +63,8 @@
         <!-- ================================================================================================= -->
 
         <activity
-            android:label="@string/app_name"
             android:name=".SettingsActivity"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
