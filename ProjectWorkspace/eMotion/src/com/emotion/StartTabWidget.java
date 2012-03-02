@@ -18,22 +18,26 @@ public class StartTabWidget extends TabActivity {
 		TabHost tabHost = getTabHost();
 		TabHost.TabSpec spec;
 		Intent intent;
-
+		
+		// Favorites tab
+				intent = new Intent().setClass(this, FavoriteActivity.class);
+				spec = tabHost
+						.newTabSpec("favorites")
+						.setIndicator("Favorites",
+								res.getDrawable(R.layout.ic_tab_fav))
+						.setContent(intent);
+				tabHost.addTab(spec);
+				
 		// History tab
 		intent = new Intent().setClass(this, EMotionActivity.class);
-		spec = tabHost.newTabSpec("history")
-				.setIndicator("History", res.getDrawable(R.layout.ic_tab_hist))
+		spec = tabHost
+				.newTabSpec("history")
+				.setIndicator("History",
+						res.getDrawable(R.layout.ic_tab_hist))
 				.setContent(intent);
 		tabHost.addTab(spec);
 
-		// Favorites tab
-		intent = new Intent().setClass(this, FavoriteActivity.class);
-		spec = tabHost
-				.newTabSpec("favorites")
-				.setIndicator("Favorites",
-						res.getDrawable(R.layout.ic_tab_fav))
-				.setContent(intent);
-		tabHost.addTab(spec);
+		
 
 		tabHost.setCurrentTab(0);
 	}
