@@ -33,6 +33,7 @@ public class FavoriteActivity extends Activity
 	private MyListContentAdapter		adapter;
 
 
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate ( Bundle savedInstanceState )
@@ -165,21 +166,24 @@ public class FavoriteActivity extends Activity
 			return "pos: " + position;
 		}
 	}
-	
+
+
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.option_menu, menu);
+	public boolean onCreateOptionsMenu ( Menu menu )
+	{
+		MenuInflater inflater = getMenuInflater ( );
+		inflater.inflate ( R.menu.option_menu, menu );
 		return true;
 	}
 
+
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-
-		Intent intent = new Intent(FavoriteActivity.this, SettingsActivity.class);
-		startActivity(intent);
+	public boolean onOptionsItemSelected ( MenuItem item )
+	{
+		Intent intent = new Intent ( FavoriteActivity.this, SettingsActivity.class );
+		startActivity ( intent );
 		return true;
-
 	}
 }

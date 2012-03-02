@@ -6,7 +6,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-public class TabWidget extends TabActivity {
+
+public class StartTabWidget extends TabActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
