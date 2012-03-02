@@ -3,10 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-<TextView 
-    android:text="Testing"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    />
+
+    <TextView
+        android:id="@+id/jokeHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="@+string/joke_selection_heading"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ListView
+        android:id="@+id/jokeList"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/intervalHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="@+string/interval_selection_heading"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TimePicker
+        android:id="@+id/intervalPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Settings" />
+
 </LinearLayout>
