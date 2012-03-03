@@ -1,38 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/jokeHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="@+string/joke_selection_heading"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ListView
-        android:id="@+id/jokeList"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp" >
-    </ListView>
+	<PreferenceCategory 
+		android:title="Pick Me Ups">
+		
+		<CheckBoxPreference 
+			android:title="Jokes" 
+			android:key="showJoke"
+			android:summary="Show jokes in notifications"
+			android:defaultValue="true"
+		/>
+		<CheckBoxPreference 
+			android:title="Motivational Quotes" 
+			android:key="showQuote"
+			android:summary="Show motivation quotes in notifications"
+			android:defaultValue="true"
+		/>
+		<CheckBoxPreference 
+			android:title="Pictures" 
+			android:key="showPics"
+			android:summary="Show pictures in notifications"
+			android:defaultValue="true"
+		/>
+		
+			
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+	        android:title="Reminder">
+	        
+		<ListPreference 
+			android:title="Interval of Breaks"
+			android:key="reminderInterval"
+			android:summary="How often you want to be notified"
+			android:defaultValue="1000" 
+			android:entries="@array/remindInterval"
+			android:entryValues="@array/intervalValues"
+			
+		/>	
+		
+	</PreferenceCategory>
 
-    <TextView
-        android:id="@+id/intervalHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="@+string/interval_selection_heading"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TimePicker
-        android:id="@+id/intervalPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save Settings" />
-
-</LinearLayout>
+	<PreferenceCategory
+	    android:title="Notification Sound" >
+		
+	   <RingtonePreference 
+	        android:title="Choose Ringtone"
+	        android:key="ringtone"
+	    	android:summary="Select a notification sound"
+	    	
+	       ></RingtonePreference>
+	</PreferenceCategory>
+	
+</PreferenceScreen>

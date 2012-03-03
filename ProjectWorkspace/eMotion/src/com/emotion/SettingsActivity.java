@@ -3,6 +3,7 @@ package com.emotion;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,7 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TimePicker;
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends PreferenceActivity {
 	
 	public final static String[] JOKE_OPTIONS = new String[] { 
 		"Show Jokes", 
@@ -28,8 +29,9 @@ public class SettingsActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.settings_page_layout);
+		addPreferencesFromResource(R.layout.settings_page_layout);
 		
+		/*
 		// Setting up a list of jokes
 		final ListView list = (ListView) this.findViewById(R.id.jokeList);
 		list.setAdapter(new ArrayAdapter<String>(this, R.layout.settings_checked_textview, JOKE_OPTIONS));
@@ -67,6 +69,7 @@ public class SettingsActivity extends Activity {
 			}
 			
 		});
+		*/
 	}
 
 }

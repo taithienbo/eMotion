@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <resources>
+        
+        <!-- Intervals of reminder -->
+        <string-array name="remindInterval">
+            <item name="1min">1min</item>
+            <item name="5min">5min</item>
+            <item name="15min">15min</item>
+            <item name="30min">30min</item>
+            <item name="1hr">1hr</item>
+            <item name="2hr">2hr</item>
+        </string-array>
+        
+        <!-- Value of the Intervals -->
+        <string-array name="intervalValues">
+			<item name="1min">60</item>
+			<item name="5min">300</item>
+			<item name="15min">900</item>
+			<item name="30min">1800</item>
+			<item name="1hr">3600</item>
+			<item name="2hr">7200</item>
+		</string-array>
+	
+    </resources>
